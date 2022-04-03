@@ -1,4 +1,4 @@
-main: de.myfdweb.minecraft.itemsapi
+main: de.myfdweb.minecraft.itemsapi.ItemsAPI
 name: ItemsAPI
 author: FDHoho007
 api-version: 1.18
