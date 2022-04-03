@@ -159,7 +159,7 @@ public class Pages {
 
     public static class Listener implements org.bukkit.event.Listener {
 
-        @EventHandler(priority = EventPriority.LOW)
+        @EventHandler(priority = EventPriority.LOWEST)
         public void onClick(InventoryClickEvent e) {
             if (e.getWhoClicked() instanceof Player) {
                 Player p = (Player) e.getWhoClicked();
