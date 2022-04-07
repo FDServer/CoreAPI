@@ -1,4 +1,4 @@
-package de.myfdweb.minecraft.itemsapi;
+package de.myfdweb.minecraft.api.items;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -74,8 +74,8 @@ public class Pages {
         this.item[2] = item3;
     }
 
-    public void open(Player p) {
-        open(p, 0);
+    public boolean open(Player p) {
+        return open(p, 0);
     }
 
     public boolean canGrab() {
@@ -94,9 +94,9 @@ public class Pages {
         this.closeOnClick = closeOnClick;
     }
 
-    public void open(Player p, int page) {
+    public boolean open(Player p, int page) {
         if (page < 0 || page >= Math.ceil(contents.size() / (5 * 9f)))
-            return;
+            return false;
         Inventory inv = Bukkit.createInventory(null, 6 * 9, "§a§l" + getTitle() + " - Seite " + (page + 1));
         for (int i = page * (5 * 9); i < Math.min(contents.size(), (page + 1) * (5 * 9)); i++)
             inv.setItem(i % (5 * 9), contents.get(i).getItemStack());
@@ -112,6 +112,7 @@ public class Pages {
         pagesView.put(p, this);
         whitelistClose.add(p);
         p.openInventory(inv);
+        return true;
     }
 
     public static class Item {
